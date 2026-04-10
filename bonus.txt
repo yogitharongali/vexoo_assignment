@@ -1,0 +1,38 @@
+**Bonus: Reasoning-Aware Adapter Design**
+
+To handle different types of queries effectively, I propose a plug-and-play reasoning-aware adapter that dynamically routes queries based on their nature.
+
+**Architecture Overview:**
+The system consists of three main components:
+
+1. Input Analyzer (Classifier)
+2. Routing Layer
+3. Specialized Reasoning Modules
+
+**1. Input Analyzer**
+The query is first analyzed using rule-based or lightweight classification techniques to determine its type (e.g., mathematical, legal, or general knowledge).
+
+**2. Routing Layer**
+Based on the classification, the query is routed to a specific reasoning module. This ensures that each query is handled by the most suitable processing logic.
+
+**3. Specialized Modules**
+
+* Math Module: Handles numerical reasoning and calculations
+* Legal Module: Uses rule-based or retrieval-based logic
+* General Module: Uses language models for open-ended responses
+
+**Example Routing Logic:**
+
+* Queries containing terms like "calculate", "sum" → Math Module
+* Queries containing "law", "legal" → Legal Module
+* Others → General Module
+
+**Design Advantages:**
+
+* Modular and extensible architecture
+* Improves reasoning accuracy by specialization
+* Easy to integrate new modules (e.g., medical, coding)
+* Supports hybrid AI systems (symbolic + neural)
+
+**Conclusion**
+This approach enables dynamic and context-aware reasoning, making the system more robust and scalable compared to a single-model architecture.
