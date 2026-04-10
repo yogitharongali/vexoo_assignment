@@ -1,0 +1,21 @@
+Title: AI Document Ingestion & Reasoning Model Implementation
+
+1. Document Ingestion & Knowledge Pyramid Approach
+The system implements a sliding window strategy to split large documents into manageable chunks with overlap, ensuring context preservation across boundaries. Each chunk is processed through a hierarchical Knowledge Pyramid consisting of four levels: Raw Text, Chunk Summary, Category Label, and Distilled Knowledge. Summaries are generated using a placeholder truncation method, while categories are assigned using simple rule-based logic. Distilled knowledge is represented through extracted keywords, simulating embeddings.
+
+2. Retrieval Strategy
+A query is processed by comparing it against all levels of the knowledge pyramid using a fuzzy string similarity method. This allows retrieval not only from raw text but also from higher-level abstractions like summaries and keywords. This multi-level retrieval improves flexibility and interpretability.
+
+3. GSM8K Training Setup
+The GSM8K dataset was used for training a reasoning model. A subset of 3000 samples was used for training and 1000 for evaluation. Due to access constraints with gated models, GPT-2 was used instead of LLaMA. Tokenization was performed using Hugging Face tokenizer with padding adjustments. LoRA-based fine-tuning was applied with GPT-2 compatible modules. Labels were aligned with input_ids to enable causal language model training. Evaluation was performed using loss-based metrics.
+
+4. Key Design Decisions & Assumptions
+
+Used sliding window with overlap to retain contextual continuity
+Simulated summarization and embeddings to focus on pipeline design
+Replaced LLaMA with GPT-2 due to access restrictions
+Adjusted LoRA configuration for GPT-2 architecture
+Prioritized modularity for scalability and future improvements
+
+5. Conclusion
+The system demonstrates an end-to-end pipeline for document ingestion and retrieval along with a basic reasoning model. The design is modular, extensible, and adaptable to more advanced models and embedding techniques.
