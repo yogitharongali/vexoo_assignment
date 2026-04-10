@@ -1,0 +1,28 @@
+Title: AI Document Ingestion + Reasoning Model
+
+Ingestion Approach
+Implemented a sliding window strategy with overlapping chunks to preserve context. Built a 4-layer knowledge pyramid:
+
+Raw text
+Summary (mocked)
+Category (rule-based classification)
+Keywords (distilled knowledge)
+
+This structure improves retrieval flexibility across abstraction levels.
+
+Retrieval Strategy
+Used fuzzy similarity (SequenceMatcher) to match queries against all pyramid layers and return the most relevant result.
+
+GSM8K Training Setup
+
+Dataset: GSM8K (3000 train, 1000 test)
+Model: LLaMA 3.2 1B
+Method: LoRA-based fine-tuning
+Tokenization using Hugging Face
+Evaluation via accuracy
+
+Key Design Decisions
+
+Modular pipeline (each layer independent)
+Lightweight simulation for summaries and embeddings
+Focus on explainability over complexity
